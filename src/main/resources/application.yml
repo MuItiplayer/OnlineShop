@@ -1,0 +1,18 @@
+server.port: 9090
+spring:
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://localhost:5433/OnlineShopModul295
+    username: postgres
+    password: admin
+    driverClassName: org.postgresql.Driver
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8080/realms/OnlineShopModul295/protocol/openid-connect/certs
+          issuer-uri: http://localhost:8080/realms/OnlineShopModul295
