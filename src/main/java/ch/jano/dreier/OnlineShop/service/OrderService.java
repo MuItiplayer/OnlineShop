@@ -1,5 +1,5 @@
 package ch.jano.dreier.OnlineShop.service;
-import ch.jano.dreier.OnlineShop.entity.Order;
+import ch.jano.dreier.OnlineShop.entity.OrderEntitity;
 import ch.jano.dreier.OnlineShop.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +14,11 @@ public class OrderService {
         this.repo = repo;
     }
 
-    public List<Order> getOrdersByUser(String username) {
+    public List<OrderEntitity> getOrdersByUser(String username) {
         return repo.findByUsername(username);
     }
 
-    public Order createOrder(Order order) {
-        return repo.save(order);
+    public OrderEntitity createOrder(OrderEntitity orderEntitity) {
+        return repo.save(orderEntitity);
     }
 }

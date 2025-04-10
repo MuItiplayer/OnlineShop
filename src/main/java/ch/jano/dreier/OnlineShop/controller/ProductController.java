@@ -1,6 +1,6 @@
 package ch.jano.dreier.OnlineShop.controller;
 
-import ch.jano.dreier.OnlineShop.entity.Product;
+import ch.jano.dreier.OnlineShop.entity.ProductEntity;
 import ch.jano.dreier.OnlineShop.service.ProductService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -19,13 +19,13 @@ public class ProductController {
 
     @GetMapping
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public List<Product> getAllProducts() {
+    public List<ProductEntity> getAllProducts() {
         return service.findAll();
     }
 
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public Product createProduct(@RequestBody Product product) {
+    public ProductEntity createProduct(@RequestBody ProductEntity product) {
         return service.save(product);
     }
 }

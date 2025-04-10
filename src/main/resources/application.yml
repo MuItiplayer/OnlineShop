@@ -4,9 +4,9 @@ spring:
     show-sql: true
     generate-ddl: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
   datasource:
-    url: jdbc:postgresql://localhost:5433/OnlineShopModul295
+    url: jdbc:postgresql://localhost:5433/shopdb
     username: postgres
     password: admin
     driverClassName: org.postgresql.Driver

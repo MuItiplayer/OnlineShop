@@ -1,5 +1,5 @@
 package ch.jano.dreier.OnlineShop.controller;
-import ch.jano.dreier.OnlineShop.entity.Order;
+import ch.jano.dreier.OnlineShop.entity.OrderEntitity;
 import ch.jano.dreier.OnlineShop.service.OrderService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -18,13 +18,13 @@ public class OrderController {
 
     @GetMapping("/{username}")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public List<Order> getOrdersByUser(@PathVariable String username) {
+    public List<OrderEntitity> getOrdersByUser(@PathVariable String username) {
         return service.getOrdersByUser(username);
     }
 
     @PostMapping
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public Order createOrder(@RequestBody Order order) {
-        return service.createOrder(order);
+    public OrderEntitity createOrder(@RequestBody OrderEntitity orderEntitity) {
+        return service.createOrder(orderEntitity);
     }
 }

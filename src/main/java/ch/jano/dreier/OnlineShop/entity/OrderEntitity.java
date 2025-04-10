@@ -4,12 +4,12 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class Order {
+@Getter
+@Setter
+public class OrderEntitity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,4 +22,7 @@ public class Order {
     private String username;
 
     private LocalDateTime orderDate = LocalDateTime.now();
+
+    @ManyToMany
+    private List<ProductEntity> product;
 }

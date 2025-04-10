@@ -1,12 +1,15 @@
 package ch.jano.dreier.OnlineShop.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.List;
 
 @Entity
-public class Product {
+@Getter
+@Setter
+public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -14,5 +17,8 @@ public class Product {
     private String name;
     private String description;
     private double price;
+
+    @ManyToMany
+    private List<OrderEntitity> orderEntitity;
 }
 

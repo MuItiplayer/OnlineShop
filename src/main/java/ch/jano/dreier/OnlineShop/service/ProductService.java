@@ -1,6 +1,6 @@
 package ch.jano.dreier.OnlineShop.service;
 
-import ch.jano.dreier.OnlineShop.entity.Product;
+import ch.jano.dreier.OnlineShop.entity.ProductEntity;
 import ch.jano.dreier.OnlineShop.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +14,11 @@ public class ProductService {
         this.repo = repo;
     }
 
-    public List<Product> findAll() {
+    public List<ProductEntity> findAll() {
         return repo.findAll();
     }
 
-    public Product save(Product product) {
+    public ProductEntity save(ProductEntity product) {
         return repo.save(product);
     }
 }
