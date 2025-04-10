@@ -1,14 +1,40 @@
 package ch.jano.dreier.OnlineShop.controller;
+
+import ch.jano.dreier.OnlineShop.entity.AdminEntity;
+import ch.jano.dreier.OnlineShop.service.AdminService;
+import jakarta.annotation.security.RolesAllowed;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import ch.jano.dreier.OnlineShop.security.Roles;
+
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/admin")
 public class AdminController {
 
-    @GetMapping("/stats")
-    @PreAuthorize("hasRole('ADMIN')")
-    public String getAdminStats() {
-        return "Nur Admins sehen das";
+    private final AdminService service;
+
+    public AdminController(AdminService service) {
+        this.service = service;
+    }
+
+    @GetMapping
+    @RolesAllowed(Roles.ADMIN)
+    public List<AdminEntity> getAllAdmins() {
+        return service.findAll();
+    }
+
+    @PostMapping
+    @RolesAllowed(Roles.ADMIN)
+    public AdminEntity createAdmin(@RequestBody AdminEntity admin) {
+        return service.save(admin);
+    }
+
+    @DeleteMapping("/{id}")
+    @RolesAllowed(Roles.ADMIN)
+    public void deleteAdmin(@PathVariable Long id) {
+        service.deleteById(id);
     }
 }
