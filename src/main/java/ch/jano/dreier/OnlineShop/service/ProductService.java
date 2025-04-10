@@ -21,4 +21,12 @@ public class ProductService {
     public ProductEntity save(ProductEntity product) {
         return repo.save(product);
     }
+    public ProductEntity findById(Long id) {
+        return repo.findById(id).orElse(null);
+    }
+
+    public void deleteById(Long id) {
+        repo.deleteById(id);
+    }
+
 }

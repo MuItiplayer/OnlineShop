@@ -7,8 +7,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class OrderEntitity {
 
     @Id
@@ -21,7 +22,30 @@ public class OrderEntitity {
 
     private String username;
 
-    private LocalDateTime orderDate = LocalDateTime.now();
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     @ManyToMany
     private List<ProductEntity> product;
