@@ -130,7 +130,7 @@ public class ProductControllerTest {
     private String obtainAccessToken(String username, String password) {
         RestTemplate rest = new RestTemplate();
 
-        String body = "client_id=demoapp&" +
+        String body = "client_id=shop-client&" +
                 "grant_type=password&" +
                 "scope=openid profile roles offline_access&" +
                 String.format("username=%s&", username) +
@@ -142,7 +142,7 @@ public class ProductControllerTest {
         HttpEntity<String> entity = new HttpEntity<>(body, headers);
 
         ResponseEntity<String> resp = rest.postForEntity(
-                "http://localhost:8080/realms/ILV/protocol/openid-connect/token",
+                "http://localhost:8080/realms/OnlineShopModul295/protocol/openid-connect/token",
                 entity,
                 String.class
         );
