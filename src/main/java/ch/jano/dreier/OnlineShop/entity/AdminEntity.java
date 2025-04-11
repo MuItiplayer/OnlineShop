@@ -2,6 +2,8 @@ package ch.jano.dreier.OnlineShop.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import java.util.List;
 
 @Entity
 @Data
@@ -13,8 +15,9 @@ public class AdminEntity {
     private Long id;
 
     private String username;
-
     private String email;
-
     private boolean active;
+
+    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)
+    private List<ProductEntity> products;
 }

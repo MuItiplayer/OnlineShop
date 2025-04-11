@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
+
 @Entity
 @Getter
 @Setter
@@ -19,4 +22,7 @@ public class UserEntity {
     private String username;
     private String email;
     private String role;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<OrderEntitity> orders;
 }

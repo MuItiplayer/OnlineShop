@@ -29,8 +29,10 @@ public class OrderService {
     }
 
     public OrderEntitity createOrder(OrderEntitity orderEntitity) {
+        orderEntitity.calculateTotalPrice();
         return repo.save(orderEntitity);
     }
+
 
     public void deleteById(Long id) {
         repo.deleteById(id);

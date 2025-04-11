@@ -1,13 +1,14 @@
 package ch.jano.dreier.OnlineShop.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
-
-import java.time.LocalDateTime;
 import java.util.List;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 
 @Entity
 @Data
+@NoArgsConstructor
 @Table(name = "orders")
 public class OrderEntitity {
 
@@ -16,11 +17,27 @@ public class OrderEntitity {
     private Long id;
 
     private String productName;
-
     private int quantity;
+    private double totalPrice;
 
-    private String username;
 
+    @ManyToMany
+    @JoinTable(
+            name = "order_products",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id")
+    )
+
+    @Column(name = "total_price")
+
+
+    public void calculateTotalPrice() {
+        this.totalPrice = products.stream()
+                .mapToDouble(ProductEntity::getPrice)
+                .sum();
+    }
+
+    private List<ProductEntity> products;
 
     public String getProductName() {
         return productName;
@@ -38,14 +55,9 @@ public class OrderEntitity {
         this.quantity = quantity;
     }
 
-    public String getUsername() {
-        return username;
-    }
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    @ManyToMany
-    private List<ProductEntity> product;
+    private String username;
 }
