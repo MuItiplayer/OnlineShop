@@ -1,17 +1,10 @@
 package ch.jano.dreier.OnlineShop.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-
-import java.util.List;
-
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
-@Data
-@NoArgsConstructor
 @Table(name = "products")
 public class ProductEntity {
 
@@ -25,6 +18,14 @@ public class ProductEntity {
 
     @ManyToMany(mappedBy = "products")
     private List<OrderEntitity> orders;
+
+    public ProductEntity(Long id, String name, String description, double price, List<OrderEntitity> orders) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.orders = orders;
+    }
 
     public String getName() {
         return name;
@@ -50,7 +51,19 @@ public class ProductEntity {
         this.price = price;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "admin_id")
-    private AdminEntity admin;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<OrderEntitity> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<OrderEntitity> orders) {
+        this.orders = orders;
+    }
 }

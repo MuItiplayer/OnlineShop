@@ -27,9 +27,9 @@ public class OrderEntitity {
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
+    private List<ProductEntity> products;
 
     @Column(name = "total_price")
-
 
     public void calculateTotalPrice() {
         this.totalPrice = products.stream()
@@ -37,14 +37,19 @@ public class OrderEntitity {
                 .sum();
     }
 
-    private List<ProductEntity> products;
-
     public String getProductName() {
         return productName;
     }
 
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public int getQuantity() {

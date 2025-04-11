@@ -35,7 +35,7 @@ public class OrderController {
         return service.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/create")
     @RolesAllowed(Roles.USER)
     public OrderEntitity createOrder(@RequestBody OrderEntitity orderEntitity) {
         return service.createOrder(orderEntitity);

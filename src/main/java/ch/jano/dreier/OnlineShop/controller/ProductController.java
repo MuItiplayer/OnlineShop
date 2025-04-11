@@ -4,7 +4,6 @@ import ch.jano.dreier.OnlineShop.entity.ProductEntity;
 import ch.jano.dreier.OnlineShop.service.ProductService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.annotation.security.RolesAllowed;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ch.jano.dreier.OnlineShop.security.Roles;

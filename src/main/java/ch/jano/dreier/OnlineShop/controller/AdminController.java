@@ -2,6 +2,7 @@ package ch.jano.dreier.OnlineShop.controller;
 
 import ch.jano.dreier.OnlineShop.entity.AdminEntity;
 import ch.jano.dreier.OnlineShop.service.AdminService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.annotation.security.RolesAllowed;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import ch.jano.dreier.OnlineShop.security.Roles;
 import java.util.List;
 
 @RestController
+@SecurityRequirement(name = "bearerAuth")
 @RequestMapping("/api/admin")
 public class AdminController {
 
