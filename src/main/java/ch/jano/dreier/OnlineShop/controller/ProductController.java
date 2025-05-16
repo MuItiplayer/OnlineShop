@@ -13,7 +13,7 @@ import java.util.List;
 @SecurityRequirement(name = "bearerAuth")
 @Validated
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/product")
 public class ProductController {
 
     private final ProductService service;
@@ -27,6 +27,18 @@ public class ProductController {
     public List<ProductEntity> getAllProducts() {
         return service.findAll();
     }
+
+
+    @GetMapping("/read/{id}")
+    @RolesAllowed(Roles.USER)
+    public ProductEntity getProductById(@PathVariable Long id) {
+        ProductEntity product = service.findById(id);
+        if (product == null) {
+            throw new RuntimeException("Product not found with id: " + id);
+        }
+        return product;
+    }
+
 
     @PostMapping("/create")
     @RolesAllowed(Roles.ADMIN)
