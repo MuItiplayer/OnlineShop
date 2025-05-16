@@ -27,6 +27,8 @@ public class ProductEntity {
         this.orders = orders;
     }
 
+    public ProductEntity() {}
+
     public String getName() {
         return name;
     }
